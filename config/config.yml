@@ -1,7 +1,7 @@
 ##
 # Basic
 #
-site_title: Вебчик под винишко                    # The title of your website
+site_title: WOWRP                    # The title of your website
 base_url: ~                         # Pico will try to guess its base URL, if this fails, override it here
                                     #     Example: http://example.com/pico/
 rewrite_url: ~                      # A boolean (true or false) indicating whether URL rewriting is forced

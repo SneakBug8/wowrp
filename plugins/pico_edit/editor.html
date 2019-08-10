@@ -18,8 +18,6 @@
   <div class="controls">
     <a href="#" class="savebutton btn icon-floppy-disk marg-r5" title="Save"></a>
     <a href="#" class="new btn icon-plus marg-r5" title="New"></a>
-    <a href="#" class="pushpullbutton btn icon-download2 marg-r5" title="Git Push/Pull"></a>
-    <a href="#" class="commitbutton btn icon-upload2 marg-r5" title="Git Commit"></a>
     <a href="#" class="clearcachebutton btn icon-loop2 marg-r5" title="Clear Cache"></a>
     <a href="#" class="padbutton btn icon-download2 marg-r5" title="Hide menu"></a>
 
@@ -112,6 +110,9 @@
 
       if (window.innerWidth < 478) {
         $("#main").toggle();
+      }
+      else {
+        $(".controls .padbutton").hide();
       }
 
       $(".controls .padbutton").on("click", function (e) {
