@@ -11,5 +11,6 @@ desktop.ini
 ._*
 
 # Composer
-/composer.phar
 .vscode
+vendor/
+composer.*
