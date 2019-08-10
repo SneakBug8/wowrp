@@ -15,4 +15,5 @@ build:
 
 stage_deploy:
   script:
+    - set ssl:verify-certificate no
     - lftp -e "open lextorg.myjino.ru; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .gitignore -X .gitlab-ci.yml --reverse --verbose --delete . domains/wowrp.sneakbug8.ru/; bye"
