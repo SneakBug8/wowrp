@@ -2,4 +2,8 @@ image: alpacadb/docker-lftp
 
 stage_deploy:
   script:
-    - lftp -e "set ssl:verify-certificate no; open lextorg.myjino.ru; user $FTP_USERNAME $FTP_PASSWORD; mirror -v -X .git -X .gitignore -X .gitlab-ci.yml --reverse --verbose -n --delete . domains/wowrp.sneakbug8.ru/; bye"
+    - set ssl:verify-certificate no
+    - open lextorg.myjino.ru
+    - user $FTP_USERNAME $FTP_PASSWORD
+    - mirror -v -X .git -X .gitignore -X .gitlab-ci.yml --reverse --verbose -n --delete . domains/wowrp.sneakbug8.ru/
+    - bye
