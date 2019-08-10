@@ -1,6 +1,4 @@
-before_script:
-  - apt-get update
-  - apt-get install lftp
+image: alpacadb/docker-lftp
 
 stage_deploy:
   script:
