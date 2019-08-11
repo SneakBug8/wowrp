@@ -11,3 +11,4 @@ Weight: -20190805
 - [Военный совет](/events/stormwind-board)
 - [Осада Гилнеаса](/events/siege-of-gilneas)
 - [Штурм возглавляет лорд Штормсонг](/events/gilneas-assault)
+- [Взятие стены Седогрива](/events/fall-of-the-wall)
