@@ -1,6 +1,7 @@
 /*
 Title: Натанос Гнилостень
 Template: character
+Weight: 10
 Image: https://i.postimg.cc/ryvTVJbp/image.png
 PlayedBy: Иван Каморан
 Race: Нежить

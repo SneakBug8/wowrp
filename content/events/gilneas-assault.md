@@ -8,8 +8,8 @@ Weight: 20190809
 *09.08.2019*
 
 ## Действующие лица
-- [лорд Штормсонг](/wowrp/characters/lord-stormsong)
-- [друид Эринс](/wowrp/characters/erins)
+- [лорд Штормсонг](/characters/lord-stormsong)
+- [друид Эринс](/characters/erins)
 - следопыт Алринн
 - паладин Анграл
     - убит

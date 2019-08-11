@@ -4,6 +4,8 @@ Author:
 Date: 5 August 2019
 Weight: 20
 */
+![](https://i.postimg.cc/CKmZXtc5/image.png)
+
 ## Лорные персонажи
 Заняты:
 - Джайна Праудмур [[Олег Сафронов](https://vk.com/dragoleg)]
@@ -13,13 +15,14 @@ Weight: 20
 - Штормсонг [[Григорий Пеняскин](https://vk.com/iconnep)]
 - Тандред Праудмур [[Константин Каретников](https://vk.com/loromanchick)]
     - Лорд-адмирал Кул-Тираса
-- Натанос [[Константин Каретников](https://vk.com/loromanchick)]
+- [Натанос](/characters/Nathanos-Brightcaller) [[Иван Каморан](https://vk.com/camoran)]
     - Телохранитель и любовник Сильваны
-- Тиранда [[Константин Каретников](https://vk.com/loromanchick)]
+- [Тиранда](/characters/tyrande) [[Константин Каретников](https://vk.com/loromanchick)]
 - Лор'Темар [[Константин Каретников](https://vk.com/loromanchick)]
 - Вериса Ветрокрылая (*но это не точно*) [[Павел Наконечный](https://vk.com/sneakbug8)]
 - Флинн Файрвинд
     - Бывший пиратский капитан, теперь служащий Кул'Тирасу.
+- [Королева Азшара](/characters/azshara) [[Иван Каморан](https://vk.com/camoran)]
 
 ## Custom Made
 - Гайн
@@ -41,10 +44,10 @@ Weight: 20
 
 ## Dead
 - паладин Анграл [[Евгений Стандов](https://vk.com/jelesniy)]
-    - Погиб во время [штурма деревни близь Гилнеаса](/wowrp/events/gilneas-assault)
+    - Погиб во время [штурма деревни близь Гилнеаса](/events/gilneas-assault)
 
 
 ### Техническая заметка
-- Для ЛОРных персонажей weight: 1
+- Для ЛОРных персонажей weight: 10
 - Для живых кастомных weight: 100
 - Для мёртвых кастомных weight: 1000
