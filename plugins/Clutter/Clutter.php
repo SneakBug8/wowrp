@@ -32,6 +32,13 @@ class Clutter extends AbstractPicoPlugin
         return ($pieces[count($pieces) - 1] == 'index');
     }
 
+    public function ifRow($string, $title)
+    {
+        if ($string) {
+            return "<tr><td>" . $title . "</td><td>" . $string . "</td><tr>";
+        }
+    }
+
     public function directoryChain($string)
     {
         $lyx = $this->getPico()->getConfig('xyz');
@@ -78,5 +85,7 @@ class Clutter extends AbstractPicoPlugin
         $twig->addFilter(new Twig_SimpleFilter('root', array($this, 'root')));
         $twig->addFilter(new Twig_SimpleFilter('level', array($this, 'level')));
         $twig->addFilter(new Twig_SimpleFilter('isIndex', array($this, 'isIndex')));
+        $twig->addFilter(new Twig_SimpleFilter('ifRow', array($this, 'ifRow')));
+
     }
 }

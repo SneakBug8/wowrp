@@ -1,7 +1,8 @@
 /*
 Title: Осада Гилнеаса Альянсом
 Author:
-Date: 5 August 2019
+Date: 05.08.2019
+Weight: -20190805
 */
 
 ![](https://i.postimg.cc/jjz4bY0v/image.png)
