@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% if meta.robots %}
-    <meta name="robots" content="{{ meta.robots }}">
+  <meta name="robots" content="{{ meta.robots }}">
   {% endif %}{% if meta.description %}
-    <meta name="description" content="{{ meta.description|striptags }}">
+  <meta name="description" content="{{ meta.description|striptags }}">
   {% endif %}
   <title>{% if meta.title %}{{ meta.title }} | {% endif %}{{ site_title }}</title>
   <link rel="stylesheet" href="{{ theme_url }}/styles/main.css" type="text/css" />
@@ -18,112 +19,87 @@
   <!-- highlight.js -->
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
 </head>
+
 <body>
 
-<aside class="main-nav">
-<nav>
-
-  <!-- <p class="directory">{{ current_page.id |root}}</p> -->
-  <p class="directory"><a href="{{ base_url }}">root</a> / {{ current_page.id |root|directoryChain}}</p>
-
-  {% set offset = 0 %}
-  <ul class="nav">
-    {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])%}
-    {% if not page.hidden %}
-    {% if page.meta.shortcut %}
-      <span class="shortcut-data" style="display:none;" data-shortcut='{{ page.meta.shortcut }}'>{{ page.url }}</span>
-    {% endif %}
-    {%if current_page.id|isIndex %}
-      {% set offset = 1 %}
-    {% endif %}
-
-      {% if (is_front_page or (page.id starts with current_page.id |root))
-      and (current_page.id|level == page.id|level-offset) %}
-
-      <li class="menuitem {% if page.id == current_page.id %}active{% endif %}">
-        <a href="{{ page.url }}" data-shortcut="{{page.meta.shortcut}}">
-            {{ page.title }}
-            {% if page.id|isIndex %}/{% endif %}
-        </a>
-      </li>
-
-      {% endif %}
-      {% endif %}
-    {% endfor %}
-  </ul>
-</nav>
-</aside>
-{% if current_page.meta.toc %}
-<aside class="nav-contents">
+  <aside class="main-nav">
+    {% include "pagesmenu.twig" %}
+  </aside>
+  {% if current_page.meta.toc %}
+  <aside class="nav-contents">
     <nav>
       <ul class="table-contents">
-      <li><a href="#">{{ current_page.title }}</a></li>
+        <li><a href="#">{{ current_page.title }}</a></li>
       </ul>
     </nav>
-    </aside>
-{% endif %}
-<main class="main-content">
-  <article class="article">
-    {% if current_page %}
-    <h1 class='main-title' id="title"><span class="section-anchor"><a href="#">#</a></span>{{ current_page.title }}</h1>
-    {% endif %}
-    <table>
-    {% if current_page.meta.image %}
-    <image style="max-height: 300px;" src="
+  </aside>
+  {% endif %}
+  <main class="main-content">
+    <article class="article">
+      {% if current_page %}
+      <h1 class='main-title' id="title"><span class="section-anchor"><a href="#">#</a></span>{{ current_page.title }}
+      </h1>
+      {% endif %}
+      <table>
+        {% if current_page.meta.image %}
+        <image style="max-height: 300px;" src="
     {{current_page.meta.image}}
     ">
 
-    {% endif %}
-    {{ current_page.meta.status|ifRow("Статус")}}
-    {{ current_page.meta.playedby|ifRow("Отыгрывает")}}
-    {{ current_page.meta.race|ifRow("Раса")}}
-    {{ current_page.meta.gender|ifRow("Пол")}}
-    {{ current_page.meta.class|ifRow("Класс")}}
-    {{ current_page.meta.age|ifRow("Возраст")}}
-    {{ current_page.meta.height|ifRow("Рост")}}
-    {{ current_page.meta.role|ifRow("Роль")}}
-    {{ current_page.meta.family|ifRow("Семья")}}
-    {{ current_page.meta.friends|ifRow("Друзья")}}
-    {{ current_page.meta.enemies|ifRow("Враги")}}
-    </table>
-    {{ content }}
-  </article>
-  <footer>
-    <hr>
-    <small>Сделано с ❤ <a href="https://sneakbug8.com">Павлом Наконечным</a></small>
-  </footer>
-</main>
-<script>
-{% if meta.highlight %} //set highlighting if it's defined
-  $('code').addClass('{{ current_page.meta.highlight }}');
- {% endif %}
+          {% endif %}
+          {{ current_page.meta.status|ifRow("Статус")}}
+          {{ current_page.meta.playedby|ifRow("Отыгрывает")}}
+          {{ current_page.meta.race|ifRow("Раса")}}
+          {{ current_page.meta.gender|ifRow("Пол")}}
+          {{ current_page.meta.class|ifRow("Класс")}}
+          {{ current_page.meta.age|ifRow("Возраст")}}
+          {{ current_page.meta.height|ifRow("Рост")}}
+          {{ current_page.meta.role|ifRow("Роль")}}
+          {{ current_page.meta.family|ifRow("Семья")}}
+          {{ current_page.meta.friends|ifRow("Друзья")}}
+          {{ current_page.meta.enemies|ifRow("Враги")}}
+      </table>
+      {{ content }}
+    </article>
+    <footer>
+      <hr>
+      <small>Сделано с ❤ <a href="https://sneakbug8.com">Павлом Наконечным</a></small>
+    </footer>
+  </main>
+  <script>
+    {
+      %
+      if meta.highlight %
+    } //set highlighting if it's defined
+    $('code').addClass('{{ current_page.meta.highlight }}'); {
+      % endif %
+    }
 
-$('.shortcut-data').each(function(){ //make shortcuts
-  var self = this;
-  Mousetrap.bind($(this).attr('data-shortcut'),function(e) {
-    window.location=$(self).text();
-  });
-});
-
-
-$('.article h1, .article h2').not('.main-title').each(function() { //make anchors
-  var rawName = $(this).text();
-
-  var cleanedName = rawName.replace(/[\.\s]+/g, '-');
-  $('<a id='+cleanedName+' />').insertBefore($(this));
-  $(this).prepend($('<span class="section-anchor"><a href="#'+cleanedName+'">#</a></span>'));
-
-  var contentLine = $('<li><a href="#'+cleanedName+'">'+rawName+'</a>'+'</li>');
-  if($(this).is('h2')) contentLine.addClass('layer2');
-  $('.table-contents').append(contentLine);
-});
+    $('.shortcut-data').each(function () { //make shortcuts
+      var self = this;
+      Mousetrap.bind($(this).attr('data-shortcut'), function (e) {
+        window.location = $(self).text();
+      });
+    });
 
 
+    $('.article h1, .article h2').not('.main-title').each(function () { //make anchors
+      var rawName = $(this).text();
 
+      var cleanedName = rawName.replace(/[\.\s]+/g, '-');
+      $('<a id=' + cleanedName + ' />').insertBefore($(this));
+      $(this).prepend($('<span class="section-anchor"><a href="#' + cleanedName + '">#</a></span>'));
 
-</script>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+      var contentLine = $('<li><a href="#' + cleanedName + '">' + rawName + '</a>' + '</li>');
+      if ($(this).is('h2')) contentLine.addClass('layer2');
+      $('.table-contents').append(contentLine);
+    });
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </body>
+
 </html>
