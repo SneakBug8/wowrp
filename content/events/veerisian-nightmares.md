@@ -2,6 +2,10 @@
 Title: "[Рассказ] Ночные кошмары Верисы"
 Weight: -7
 Size: 0.8
+template: event
+characters:
+- characters/veerisa-wildrunner
+- characters/erins
 */
 
 ![](https://i.postimg.cc/kMbMLcv7/image.png)

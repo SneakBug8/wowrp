@@ -1,6 +1,12 @@
 /*
 Title: В погоне за артефактами
 Weight: -6
+Template: event
+Characters:
+- characters/tandred-proudmoore
+- characters/erins
+- characters/lord-stormsong
+- characters/veerisa-wildrunner
 */
 
 ## Утро

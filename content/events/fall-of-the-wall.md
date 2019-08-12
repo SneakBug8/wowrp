@@ -3,6 +3,12 @@ Title: Взятие стены Седогрива
 Date: 12.08.2019
 Weight: -5
 Size: 1.2
+Template: event
+Characters:
+- characters/veerisa-wildrunner
+- characters/tandred-proudmoore
+- characters/erins
+- characters/lord-stormsong
 */
 
 [Утро этого дня](/events/graymane-mansion#Утро)

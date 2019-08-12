@@ -4,6 +4,11 @@ Author:
 Date: 08.08.2019
 Weight: -3
 Size: 1.2
+Template: event
+Characters:
+- characters/tandred-proudmoore
+- characters/erins
+- characters/lord-stormsong
 */
 
 ## События

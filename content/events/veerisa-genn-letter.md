@@ -2,6 +2,9 @@
 Title: Письмо Верисы Генну Седогриву
 Weight: -8
 Size: 0.8
+template: event
+characters:
+- characters/veerisa-wildrunner
 */
 
 Дорогой Генн,
