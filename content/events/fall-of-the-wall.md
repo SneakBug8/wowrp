@@ -1,7 +1,8 @@
 /*
 Title: Взятие стены Седогрива
 Date: 12.08.2019
-Weight: -20190812
+Weight: -5
+Size: 1.2
 */
 
 [Утро этого дня](/events/graymane-mansion#Утро)
