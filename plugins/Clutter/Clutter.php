@@ -78,8 +78,14 @@ class Clutter extends AbstractPicoPlugin
     }
 
     public function ifStyle($string) {
-        if ($string) {
+        if ($string === "bold" || $string === "bolder") {
             return 'style="font-weight: ' . $string . ';"';
+        }
+        else if ($string === "italic") {
+            return 'style="font-style: ' . $string . ';"';
+        }
+        else if ($string === "underline") {
+            return 'style="text-decoration: ' . $string . ';"';
         }
         else {
             return "";

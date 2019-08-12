@@ -46,10 +46,7 @@
       {% endif %}
       <table>
         {% if current_page.meta.image %}
-        <image style="max-height: 300px;" src="
-    {{current_page.meta.image}}
-    ">
-
+        <image style="max-height: 300px;" src="{{current_page.meta.image}}">
           {% endif %}
           {{ current_page.meta.status|ifRow("Статус")}}
           {{ current_page.meta.playedby|ifRow("Отыгрывает")}}
@@ -64,6 +61,21 @@
           {{ current_page.meta.enemies|ifRow("Враги")}}
       </table>
       {{ content }}
+
+      <h2>События</h2>
+      {% for page in pages|sort_by("title")|sort_by(["meta", "weight"]) %}
+      {% if not page.hidden and page.meta.template == "event" %}
+      {% if current_page.id in page.meta.characters %}
+      <li class="menuitem {% if page.id == current_page.id %}active{% endif %}">
+        <a href="{{ page.url }}" data-shortcut="{{page.meta.shortcut}}">
+          {{ page.title }}
+          {% if page.id|isIndex %}/{% endif %}
+        </a>
+      </li>
+
+      {% endif %}
+      {% endif %}
+      {% endfor %}
     </article>
     <footer>
       <hr>
@@ -76,7 +88,8 @@
       if meta.highlight %
     } //set highlighting if it's defined
     $('code').addClass('{{ current_page.meta.highlight }}'); {
-      % endif %
+      %
+      endif %
     }
 
     $('.shortcut-data').each(function () { //make shortcuts

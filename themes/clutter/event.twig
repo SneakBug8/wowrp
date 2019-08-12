@@ -50,8 +50,7 @@
             {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])%}
             {% if not page.hidden %}
             {% if page.id in current_page.meta.characters %}
-            <li class="menuitem {% if page.id == current_page.id %}active{% endif %}" {{page.meta.size|ifSize}}
-                {{page.meta.style|ifStyle}}>
+            <li class="menuitem {% if page.id == current_page.id %}active{% endif %}">
                 <a href="{{ page.url }}" data-shortcut="{{page.meta.shortcut}}">
                     {{ page.title }}
                     {% if page.id|isIndex %}/{% endif %}
@@ -70,36 +69,7 @@
             <small>Сделано с ❤ <a href="https://sneakbug8.com">Павлом Наконечным</a></small>
         </footer>
     </main>
-    <script>
-        {
-            %
-            if meta.highlight %
-        } //set highlighting if it's defined
-        $('code').addClass('{{ current_page.meta.highlight }}'); {
-            %
-            endif %
-        }
-
-        $('.shortcut-data').each(function () { //make shortcuts
-            var self = this;
-            Mousetrap.bind($(this).attr('data-shortcut'), function (e) {
-                window.location = $(self).text();
-            });
-        });
-
-
-        $('.article h1, .article h2').not('.main-title').each(function () { //make anchors
-            var rawName = $(this).text();
-
-            var cleanedName = rawName.replace(/[\.\s]+/g, '-');
-            $('<a id=' + cleanedName + ' />').insertBefore($(this));
-            $(this).prepend($('<span class="section-anchor"><a href="#' + cleanedName + '">#</a></span>'));
-
-            var contentLine = $('<li><a href="#' + cleanedName + '">' + rawName + '</a>' + '</li>');
-            if ($(this).is('h2')) contentLine.addClass('layer2');
-            $('.table-contents').append(contentLine);
-        });
-    </script>
+      {% include "anchors-script.twig" %}
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </body>
 
