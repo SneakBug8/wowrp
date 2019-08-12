@@ -2,7 +2,6 @@
 Title: Взятие стены Седогрива
 Date: 12.08.2019
 Weight: -5
-Size: 1.2
 Template: event
 Characters:
 - characters/veerisa-wildrunner

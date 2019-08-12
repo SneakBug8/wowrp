@@ -3,7 +3,6 @@ Title: Осада Гилнеаса Альянсом ч.1
 Author:
 Date: 08.08.2019
 Weight: -3
-Size: 1.2
 Template: event
 Characters:
 - characters/tandred-proudmoore

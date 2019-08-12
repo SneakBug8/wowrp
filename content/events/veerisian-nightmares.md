@@ -1,7 +1,7 @@
 /*
 Title: "[Рассказ] Ночные кошмары Верисы"
 Weight: -7
-Size: 0.8
+Style: italic
 template: event
 characters:
 - characters/veerisa-wildrunner

@@ -1,7 +1,6 @@
 /*
 Title: Военный совет в Штормграде
 Weight: -2
-Size: 1.2
 Template: event
 Characters:
 - characters/jaina-proudmoore

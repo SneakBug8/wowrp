@@ -3,7 +3,6 @@ Title: Зачистка местности и взятие Гилнеаса
 Author:
 Date: 09.08.2019
 Weight: -4
-Size: 1.2
 Template: event
 Characters:
 - characters/tandred-proudmoore

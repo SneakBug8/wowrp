@@ -1,7 +1,7 @@
 /*
 Title: Предыстория Джайны
 Weight: -1
-Size: 0.8
+Style: italic
 template: event
 characters:
     - characters/jaina-proudmoore

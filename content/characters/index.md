@@ -7,6 +7,7 @@ Weight: 20
 ![](https://i.postimg.cc/CKmZXtc5/image.png)
 
 ## Лорные персонажи
+
 !!!
 { [Джайна Праудмур](/characters/jaina-proudmoore) | *[Олег Сафронов](https://vk.com/dragoleg)* }
 { Андуин | Король Альянса. Сын Вариана Ринна. }
@@ -22,6 +23,7 @@ Weight: 20
 !!!
 
 ## Custom Made
+
 !!!
 { Гайн }
 { Дерион }
@@ -32,6 +34,7 @@ Weight: 20
 { вице-адмирал Хейнсворт | *[Константин Каретников](https://vk.com/loromanchick)* }
 { Ворфилд | *[Евгений Стандов](https://vk.com/jelesniy)* }
 !!!
+
 ## Dead
 
 !!!

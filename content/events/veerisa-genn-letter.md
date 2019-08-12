@@ -1,7 +1,7 @@
 /*
 Title: Письмо Верисы Генну Седогриву
 Weight: -8
-Size: 0.8
+Style: italic
 template: event
 characters:
 - characters/veerisa-wildrunner
