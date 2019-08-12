@@ -67,6 +67,49 @@ class Clutter extends AbstractPicoPlugin
         return implode(' / ', $returnStringParts);
     }
 
+    public function ifSize($string)
+    {
+        if ($string) {
+            return 'style="font-size:' . $string . 'em;"';
+        }
+        else {
+            return "";
+        }
+    }
+
+    public function ifStyle($string) {
+        if ($string) {
+            return 'style="font-weight: ' . $string . ';"';
+        }
+        else {
+            return "";
+        }
+    }
+
+    public function onContentParsed(&$content) {
+        preg_match_all("/\{.+\}/", $content, $matches);
+
+        foreach ($matches[0] as $row) {
+            $res = $row;
+            $res = str_replace("{", "<tr><td>", $res);
+            $res = str_replace("}", "</td></tr>", $res);
+            $res = str_replace("|", "</td><td>", $res);
+
+            $content = str_replace($row, $res, $content);
+        }
+
+        $repeater = ["<table>", "</table>"];
+        $i = 0;
+
+        while (strpos($content, "!!!") !== false) {
+            $content = str_replace("!!!", $repeater[$i], $content);
+            $i = ($i + 1) % 2;
+        }
+
+        // { = <tr><td>
+        // } = </td></td>
+    }
+
     //public function onPageRendering(&$templateName, array &$twigVariables) {
     public function onPagesDiscovered(&$pages)
     {
@@ -86,6 +129,8 @@ class Clutter extends AbstractPicoPlugin
         $twig->addFilter(new Twig_SimpleFilter('level', array($this, 'level')));
         $twig->addFilter(new Twig_SimpleFilter('isIndex', array($this, 'isIndex')));
         $twig->addFilter(new Twig_SimpleFilter('ifRow', array($this, 'ifRow')));
+        $twig->addFilter(new Twig_SimpleFilter('ifSize', array($this, 'ifSize')));
+        $twig->addFilter(new Twig_SimpleFilter('ifStyle', array($this, 'ifStyle')));
 
     }
 }
