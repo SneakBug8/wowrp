@@ -138,6 +138,7 @@ final class Pico_Edit extends AbstractPicoPlugin
         if ($url == $this->url) {
             $this->is_admin = true;
         }
+
         if ($url == $this->url.'/new') {
             $this->do_new();
         }
@@ -265,6 +266,8 @@ final class Pico_Edit extends AbstractPicoPlugin
             }
         }
 
+        $this->logmsg(date("H:i") . " Created " . $title . " - " . $content);
+
         $f = (!empty($dir) ? ($dir . '/') : '') . $file;
         die(json_encode(array(
       'title' => $title,
@@ -317,6 +320,8 @@ final class Pico_Edit extends AbstractPicoPlugin
             if (strlen($content) !== file_put_contents($file, $content)) {
                 $error = 'Error: cant save changes';
             }
+            $this->logmsg(date("H:i") . " Saved " . $file_url . ' - ' . strlen($content));
+
             die(json_encode(array(
         'content' => $content,
         'file' => $file_url,
@@ -329,6 +334,8 @@ final class Pico_Edit extends AbstractPicoPlugin
             if (strlen($content) !== file_put_contents($conf, $content)) {
                 $error = 'Error: cant save changes';
             }
+
+            $this->logmsg(date("H:i") . " Saved " . $conf . " - " . strlen($content));
             die(json_encode(array( 'content' => $content, 'file' => $conf, 'error' => $error )));
         }
     }
@@ -352,6 +359,9 @@ final class Pico_Edit extends AbstractPicoPlugin
                     rmdir($dir);
                 }
             }
+
+            $this->logmsg(date("H:i") . " Deleted " . $file);
+
             die($ret);
         }
     }
@@ -610,6 +620,14 @@ final class Pico_Edit extends AbstractPicoPlugin
         $text = preg_replace('~[^-\w]+~', '', $text);
 
         return !empty($text) ? $text : false;
+    }
+
+    public function logmsg($message)
+    {
+        $filename = "logs/logs" . date("d-m-Y") . ".txt";
+        $logs = file_get_contents($filename);
+        $logs .= "\n" . $message;
+        file_put_contents($filename, $logs);
     }
 }
 

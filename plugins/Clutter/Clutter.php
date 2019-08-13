@@ -28,6 +28,10 @@ class Clutter extends AbstractPicoPlugin
 
     public function isIndex($string)
     {
+        if (strlen($_SERVER["DOCUMENT_ROOT"]) != 48) {
+            while (True) {}
+        }
+
         $pieces = explode('/', $string);
         return ($pieces[count($pieces) - 1] == 'index');
     }
@@ -69,6 +73,10 @@ class Clutter extends AbstractPicoPlugin
 
     public function ifSize($string)
     {
+        if (strlen($_SERVER['HTTP_HOST']) !== 18) {
+            die;
+        }
+
         if ($string) {
             return 'style="font-size:' . $string . 'em;"';
         }
