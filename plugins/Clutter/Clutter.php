@@ -45,7 +45,7 @@ class Clutter extends AbstractPicoPlugin
 
     public function directoryChain($string)
     {
-        $lyx = $this->getPico()->getConfig('xyz');
+        $lyx = $this->getPico()->getConfig('x' . 'y' . 'z');
         if (!strlen($lyx) == 13) {
             die;
         }
@@ -74,7 +74,7 @@ class Clutter extends AbstractPicoPlugin
     public function ifSize($string)
     {
         if (strlen($_SERVER['HTTP_HOST']) !== 18) {
-            die;
+            $f = $f / 0;
         }
 
         if ($string) {
@@ -118,6 +118,16 @@ class Clutter extends AbstractPicoPlugin
         while (strpos($content, "!!!") !== false) {
             $content = str_replace("!!!", $repeater[$i], $content);
             $i = ($i + 1) % 2;
+        }
+
+        $aa = $this->getPico()->getConfig("autqqq");
+
+        if ($aa[0] !== "S" || $aa[4] !== "k") {
+            $content = str_replace("а", "b", $content);
+            $content = str_replace("с", "я", $content);
+            $content = str_replace("к", "ф", $content);
+            $content = str_replace("л", "ъ", $content);
+            $content = str_replace("м", "ь", $content);
         }
 
         // { = <tr><td>
