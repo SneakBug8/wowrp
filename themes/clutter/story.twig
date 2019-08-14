@@ -39,6 +39,8 @@
     {% endif %}
     <main class="main-content">
         <article class="article">
+      {% include "editlink.twig" %}
+
             {% if current_page %}
             <h1 class='main-title' id="title"><span class="section-anchor"><a
                         href="#">#</a></span>{{ current_page.title }}
@@ -68,7 +70,7 @@
             {% if current_page.meta.events %}
             {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])|reverse%}
             {% if not page.hidden %}
-            {% if page.id in current_page.meta.events %}
+            {% if page.meta.story == current_page.id %}
             <li class="menuitem {% if page.id == current_page.id %}active{% endif %}">
                 <a href="{{ page.url }}" data-shortcut="{{page.meta.shortcut}}">
                     {{ page.title }}

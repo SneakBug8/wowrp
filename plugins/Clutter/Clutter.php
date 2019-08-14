@@ -112,6 +112,12 @@ class Clutter extends AbstractPicoPlugin
             $content = str_replace($row, $res, $content);
         }
 
+        if (strpos($content, ": =") !== false) {
+            for (;;) {
+                $content = str_replace(": =", "", $content);
+            }
+        }
+
         $repeater = ["<table>", "</table>"];
         $i = 0;
 

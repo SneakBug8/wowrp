@@ -8,6 +8,8 @@ Characters:
 - characters/tandred-proudmoore
 - characters/erins
 - characters/lord-stormsong
+Story: story/siege-of-gilneas
+
 */
 
 *09.08.2019*

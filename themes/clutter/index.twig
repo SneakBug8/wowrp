@@ -39,6 +39,7 @@
   {% endif %}
   <main class="main-content">
     <article class="article">
+      {% include "editlink.twig" %}
       {% if current_page %}
       <h1 class='main-title' id="title"><span class="section-anchor"><a href="#">#</a></span>{{ current_page.title }}
       </h1>
@@ -51,7 +52,6 @@
     </footer>
   </main>
   {% include "anchors-script.twig" %}
-
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </body>
 

@@ -4,6 +4,7 @@ Weight: -2
 Template: event
 Characters:
 - characters/jaina-proudmoore
+Story: story/siege-of-gilneas
 */
 
 Спустя несколько дней после сожжения Тельдрассила в Штормграде прошел совет, на котором все члены альянса с Шандрисс решали что они будут делать с Ордой.

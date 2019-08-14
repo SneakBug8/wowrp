@@ -8,6 +8,7 @@ Characters:
 - characters/tandred-proudmoore
 - characters/erins
 - characters/lord-stormsong
+Story: story/siege-of-gilneas
 */
 
 [Утро этого дня](/events/graymane-mansion#Утро)

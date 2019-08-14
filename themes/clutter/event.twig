@@ -39,12 +39,21 @@
     {% endif %}
     <main class="main-content">
         <article class="article">
+        {% include "editlink.twig" %}
             {% if current_page %}
             <h1 class='main-title' id="title"><span class="section-anchor"><a
                         href="#">#</a></span>{{ current_page.title }}
             </h1>
             {% endif %}
-
+            {% if current_page.meta.story %}
+            {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])%}
+            {% if not page.hidden %}
+            {% if page.id == current_page.meta.story %}
+            Часть цепочки <a href = "/{{current_page.meta.story}}">{{page.title}}</a>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% endif %}
             {% if current_page.meta.characters %}
             <h2>Действующие лица</h2>
             {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])%}

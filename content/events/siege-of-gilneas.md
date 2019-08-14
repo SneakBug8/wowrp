@@ -1,5 +1,5 @@
 /*
-Title: Осада Гилнеаса Альянсом ч.1
+Title: Осада Гилнеаса Альянсом
 Author:
 Date: 08.08.2019
 Weight: -3
@@ -8,6 +8,8 @@ Characters:
 - characters/tandred-proudmoore
 - characters/erins
 - characters/lord-stormsong
+Story: story/siege-of-gilneas
+
 */
 
 ## События

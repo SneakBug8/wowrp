@@ -1,6 +1,5 @@
 <nav>
     <p class="directory"><a href="{{ base_url }}">root</a> / {{ current_page.id |root|directoryChain}}</p>
-
     <ul class="nav">
         {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])%}
         {% if not page.hidden %}
@@ -26,4 +25,6 @@
         {% endfor %}
     </ul>
     {% set offset = 0 %}
+
+  {% include "newform.twig" %}
 </nav>

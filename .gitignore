@@ -15,3 +15,5 @@ desktop.ini
 vendor/
 composer.*
 config/l*.yml
+
+logs/
