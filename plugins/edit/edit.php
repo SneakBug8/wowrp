@@ -62,11 +62,16 @@
 
         public function logmsg($message)
         {
-            $filename = "logs/logs" . date("d-m-Y") . ".txt";
-            $logs = file_get_contents($filename);
-            $logs .= "\n[" . date("H:i") . "] " . $message;
+            $filename = $this->getPico()->getConfig('content_dir') . "edits/log" . date("d-m-Y") . ".md";
+
+            if (file_exists($filename)) {
+                $logs = file_get_contents($filename);
+            } else {
+                $logs = "/*\nTitle: Логи от " . date('d-m-Y') . "\n*/";
+            }
+
+            $logs .= "\n\n[" . date("H:i") . "] " . $message;
             file_put_contents($filename, $logs);
         }
     }
 ?>
-<!-- HTML form -->
