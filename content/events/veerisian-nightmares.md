@@ -6,6 +6,8 @@ template: event
 characters:
 - characters/veerisa-wildrunner
 - characters/erins
+story:
+- story/greater-evil
 */
 
 ![](https://i.postimg.cc/kMbMLcv7/image.png)

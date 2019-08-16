@@ -5,6 +5,8 @@ Style: italic
 template: event
 characters:
 - characters/veerisa-wildrunner
+story:
+- story/greater-evil
 */
  
 Дорогой Генн,
