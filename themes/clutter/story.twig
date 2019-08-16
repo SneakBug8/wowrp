@@ -49,39 +49,12 @@
 
             {% if current_page.meta.characters %}
             <h2>Действующие лица</h2>
-            {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])%}
-            {% if not page.hidden %}
-            {% if page.id in current_page.meta.characters %}
-            <li class="menuitem {% if page.id == current_page.id %}active{% endif %}" {{page.meta.size|ifSize}}
-                {{page.meta.style|ifStyle}}>
-                <a href="{{ page.url }}" data-shortcut="{{page.meta.shortcut}}">
-                    {{ page.title }}
-                    {% if page.id|isIndex %}/{% endif %}
-                </a>
-            </li>
-
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+            {{current_page|getCharacters()}}
             {% endif %}
             <h2>События</h2>
             {{ content }}
 
-            {% if current_page.meta.events %}
-            {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])|reverse%}
-            {% if not page.hidden %}
-            {% if page.meta.story == current_page.id %}
-            <li class="menuitem {% if page.id == current_page.id %}active{% endif %}">
-                <a href="{{ page.url }}" data-shortcut="{{page.meta.shortcut}}">
-                    {{ page.title }}
-                    {% if page.id|isIndex %}/{% endif %}
-                </a>
-            </li>
-
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-            {% endif %}
+            {{current_page|getStoryEvents()}}
         </article>
         <footer>
             <hr>

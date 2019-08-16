@@ -46,29 +46,11 @@
             </h1>
             {% endif %}
             {% if current_page.meta.story %}
-            {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])%}
-            {% if not page.hidden %}
-            {% if page.id == current_page.meta.story %}
-            Часть цепочки <a href = "/{{current_page.meta.story}}">{{page.title}}</a>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+            Часть цепочек {{current_page|getStories()}}
             {% endif %}
             {% if current_page.meta.characters %}
             <h2>Действующие лица</h2>
-            {% for page in pages|sort_by("title")|sort_by(["meta", "weight"])%}
-            {% if not page.hidden %}
-            {% if page.id in current_page.meta.characters %}
-            <li class="menuitem {% if page.id == current_page.id %}active{% endif %}">
-                <a href="{{ page.url }}" data-shortcut="{{page.meta.shortcut}}">
-                    {{ page.title }}
-                    {% if page.id|isIndex %}/{% endif %}
-                </a>
-            </li>
-
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+            {{current_page|getCharacters()}}
             {% endif %}
             <h2>События</h2>
             {{ content }}

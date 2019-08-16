@@ -14,20 +14,36 @@
             Файл: <?php echo $_GET["file"]; ?>
             <?php
 
-            $filepath = __DIR__  . "/../../content/" . $_GET["file"] . ".md";
+            $filepath = $this->getPico()->getConfig('content_dir') . $_GET["file"] . ".md";
+
+            $recoverypath = $this->getPico()->getConfig('content_dir')
+            . "../recovery/" . $_GET["file"] . "/" . date("d-m-Y") .".md";
+            $this->ensurePath($recoverypath);
 
             if (isset($_POST['text']) && $_POST['password'] == "1122") {
-                file_put_contents($filepath, $_POST['text']);
-                $this->logmsg("Edited " . $_GET["file"]);
+                if (file_exists($filepath)) {
+                    $ttext = file_get_contents($filepath);
+                }
 
-                if ($_POST['text'] == "") {
-                    unlink($filepath); ?>
+                if ($_POST['text'] != $ttext) {
+                    file_put_contents($filepath, $_POST['text']);
+                    file_put_contents($recoverypath, $_POST['text']);
+
+                    $change = str_word_count($_POST['text']) - str_word_count($ttext);
+
+                    $this->logmsg("Edited " . $_GET["file"] . (($change > 0) ? " +" : " ") . $change);
+
+                    if ($_POST['text'] == "") {
+                        unlink($filepath); ?>
                     <b>Файл удален</b>
                     <?php
-                } else {
-                    ?>
+                    } else {
+                        ?>
                     <b>Успешно сохранено</b>
                     <?php
+                    }
+                } else {
+                    ?><b>Файл не изменён</b><?php
                 }
             } elseif (isset($_POST['password']) && $_POST['password'] !== "1122") {
                 ?>
@@ -36,6 +52,8 @@
             }
             if (isset($_POST['text'])) {
                 $text = $_POST['text'];
+            } elseif (file_exists($filepath) && $ttext) {
+                $text = $ttext;
             } elseif (file_exists($filepath)) {
                 $text = file_get_contents($filepath);
             } else {
@@ -67,11 +85,28 @@
             if (file_exists($filename)) {
                 $logs = file_get_contents($filename);
             } else {
-                $logs = "/*\nTitle: Логи от " . date('d-m-Y') . "\n*/";
+                $logs = "/*\nTitle: Логи изменений от " . date('d-m-Y') . "\n*/\nВремя указано в GMT";
             }
 
             $logs .= "\n\n[" . date("H:i") . "] " . $message;
             file_put_contents($filename, $logs);
+        }
+
+        public function ensurePath($path)
+        {
+            $fragments = explode("/", $path);
+            $temppath = "";
+
+            foreach ($fragments as $fragment) {
+                if (strpos($fragment, ".md")) {
+                    continue;
+                }
+
+                $temppath .= "/" . $fragment;
+                if (!is_dir($temppath)) {
+                    mkdir($temppath);
+                }
+            }
         }
     }
 ?>
